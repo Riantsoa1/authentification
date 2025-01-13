@@ -13,8 +13,13 @@ const LoginPage: React.FC = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("Utilisateur connecté :", userCredential.user);
-    } catch (error: any) {
-      console.error("Erreur de connexion :", error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error){
+            console.error("Erreur de connexion :", error.message);
+        } else {
+            console.error("Erreur de connexion inconnue");
+        }
+      
     }
   };
 
