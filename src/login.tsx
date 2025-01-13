@@ -2,6 +2,7 @@
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "./firebaseconfig";
+import { useRouter } from "next/router";
 
 const LoginPage: React.FC = () => {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -9,10 +10,14 @@ const LoginPage: React.FC = () => {
     const email = (event.currentTarget.elements.namedItem("email") as HTMLInputElement).value;
     const password = (event.currentTarget.elements.namedItem("password") as HTMLInputElement).value;
 
+    const router = useRouter();
     const auth = getAuth(app);
+
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("Utilisateur connecté :", userCredential.user);
+      router.push("/dashboard");
+
     } catch (error: unknown) {
         if (error instanceof Error){
             console.error("Erreur de connexion :", error.message);
