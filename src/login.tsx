@@ -5,13 +5,12 @@ import app from "./firebaseconfig";
 import { useRouter } from "next/navigation";
 
 const LoginPage: React.FC = () => {
+  const router = useRouter();
+  const auth = getAuth(app);
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const email = (event.currentTarget.elements.namedItem("email") as HTMLInputElement).value;
     const password = (event.currentTarget.elements.namedItem("password") as HTMLInputElement).value;
-
-    const router = useRouter();
-    const auth = getAuth(app);
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
