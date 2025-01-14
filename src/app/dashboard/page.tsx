@@ -1,3 +1,5 @@
+'use client'
+
 import { unsubscribe } from "diagnostics_channel";
 import { Auth } from "firebase-admin/auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
