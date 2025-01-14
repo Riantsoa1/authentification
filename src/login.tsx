@@ -2,7 +2,7 @@
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "./firebaseconfig";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const LoginPage: React.FC = () => {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
