@@ -1,7 +1,7 @@
 import { unsubscribe } from "diagnostics_channel";
 import { Auth } from "firebase-admin/auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Dashboard(){
